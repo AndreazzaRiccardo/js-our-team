@@ -29,20 +29,25 @@ const ourTeam = [
         profession: "Graphic Designer",
         photo: "barbara-ramos-graphic-designer.jpg"
     }
-]
+];
+
+let members = "";
 
 for (let i = 0; i < ourTeam.length; i++) {
     const currMember = ourTeam[i];
     
-    document.querySelector(".row").innerHTML +=`
+    members +=`
         <div class="col">
             <div class="card">
                 <img src="./img/${currMember.photo}" class="card-img-top" alt="Photo of ${currMember.name}">
                 <div class="card-body">
-                <h2>${currMember.name}</h2>
+                <h3>${currMember.name}</h3>
                 <p class="card-text">${currMember.profession}</p>
                 </div>
             </div>
         </div>
     `
 }
+
+document.querySelector(".row").innerHTML = members;
+
