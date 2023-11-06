@@ -27,6 +27,22 @@ const ourTeam = [
     {
         name: "Barbara Ramos",
         profession: "Graphic Designer",
-        photo: " barbara-ramos-graphic-designer.jpg"
+        photo: "barbara-ramos-graphic-designer.jpg"
     }
 ]
+
+for (let i = 0; i < ourTeam.length; i++) {
+    const currMember = ourTeam[i];
+    
+    document.querySelector(".row").innerHTML +=`
+        <div class="col">
+            <div class="card">
+                <img src="./img/${currMember.photo}" class="card-img-top" alt="Photo of ${currMember.name}">
+                <div class="card-body">
+                <h2>${currMember.name}</h2>
+                <p class="card-text">${currMember.profession}</p>
+                </div>
+            </div>
+        </div>
+    `
+}
