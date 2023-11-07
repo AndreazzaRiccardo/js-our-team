@@ -31,30 +31,73 @@ const ourTeam = [
     }
 ];
 
-for (let i = 0; i < ourTeam.length; i++) {
-    const currMember = ourTeam[i];
-    for(let key in currMember){
-        console.log(key, currMember[key]);
+// for (let i = 0; i < ourTeam.length; i++) {
+//     const currMember = ourTeam[i];
+//     for(let key in currMember){
+//         console.log(key, currMember[key]);
+//     }
+// }
+
+drawTeam();
+
+document.getElementById("submit-btn").addEventListener("click", function(event){
+    event.preventDefault();
+    const member = createNewTeamMember();
+    ourTeam.push(member);
+    drawTeam();
+})
+
+
+
+
+// FUNZIONI
+
+/**
+ * Funzione che sfoglia l'array di oggetti
+ * @returns {any}
+ */
+function drawTeam(){
+    let members = "";
+    for (let i = 0; i < ourTeam.length; i++) {
+        const currMember = ourTeam[i];
+        members += drawTeamMember(currMember);
     }
+    document.querySelector(".row").innerHTML = members;
 }
 
-let members = "";
 
-for (let i = 0; i < ourTeam.length; i++) {
-    const currMember = ourTeam[i];
-    
-    members +=`
+/**
+ * Funzione che preleva dati da un form e creo un nuovo oggetto
+ * @returns {object}
+ */
+function createNewTeamMember(){
+    const name = document.getElementById("name").value;
+    const role = document.getElementById("role").value;
+    const image = document.getElementById("image").value;
+
+    return {
+        name: name,
+        profession: role,
+        photo: image
+    };
+}
+
+
+/**
+ * Crea elemento HTML per un membro del team
+ * @param {any} teamMember
+ * @returns {string}
+ */
+function drawTeamMember(teamMember){
+    return `
         <div class="col">
             <div class="card">
-                <img src="./img/${currMember.photo}" class="card-img-top" alt="Photo of ${currMember.name}">
+                <img src="./img/${teamMember.photo}" class="card-img-top" alt="Photo of ${teamMember.name}">
                 <div class="card-body">
-                <h3>${currMember.name}</h3>
-                <p class="card-text">${currMember.profession}</p>
+                <h3>${teamMember.name}</h3>
+                <p class="card-text">${teamMember.profession}</p>
                 </div>
             </div>
         </div>
-    `
+    `;
 }
-
-document.querySelector(".row").innerHTML = members;
-
