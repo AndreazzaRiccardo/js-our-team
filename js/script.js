@@ -31,6 +31,13 @@ const ourTeam = [
     }
 ];
 
+for (let i = 0; i < ourTeam.length; i++) {
+    const currMember = ourTeam[i];
+    for(let key in currMember){
+        console.log(key, currMember[key]);
+    }
+}
+
 let members = "";
 
 for (let i = 0; i < ourTeam.length; i++) {
